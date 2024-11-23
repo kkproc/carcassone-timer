@@ -131,10 +131,37 @@ class CarcassonneTimer {
         this.updateDisplay();
     }
 
-    gameOver(player) {
+    async gameOver(player) {
         clearInterval(this.timerInterval);
         this.isRunning = false;
-        alert(`Game Over! Player ${player} ran out of time!`);
+        
+        // Save match result
+        const matchData = {
+            player1_total: this.player1Total,
+            player2_total: this.player2Total,
+            winner: player === 1 ? 2 : 1, // The other player wins when time runs out
+            time_preset: this.timePreset
+        };
+        
+        try {
+            const response = await fetch('/api/matches', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(matchData)
+            });
+            
+            if (response.ok) {
+                alert(`Game Over! Player ${player} ran out of time! Match saved to history.`);
+            } else {
+                alert(`Game Over! Player ${player} ran out of time! Failed to save match.`);
+            }
+        } catch (error) {
+            console.error('Failed to save match:', error);
+            alert(`Game Over! Player ${player} ran out of time! Failed to save match.`);
+        }
+        
         this.resetTimer();
     }
 }
