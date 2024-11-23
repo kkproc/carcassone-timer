@@ -22,6 +22,10 @@ class CarcassonneTimer {
         this.resetBtn = document.getElementById('reset-btn');
         this.timePresetSelect = document.getElementById('time-preset');
         
+        // Player timer containers
+        this.player1Container = document.querySelector('.player1-section .timer-container');
+        this.player2Container = document.querySelector('.player2-section .timer-container');
+        
         // Player 1 elements
         this.p1Minutes = document.getElementById('player1-minutes');
         this.p1Seconds = document.getElementById('player1-seconds');
@@ -38,6 +42,28 @@ class CarcassonneTimer {
         this.pauseBtn.addEventListener('click', () => this.togglePause());
         this.resetBtn.addEventListener('click', () => this.resetTimer());
         this.timePresetSelect.addEventListener('change', () => this.updateTimePreset());
+        
+        // Add click events for timer containers
+        this.player1Container.addEventListener('click', () => {
+            if (this.currentPlayer === 2) this.togglePlayer();
+        });
+        this.player2Container.addEventListener('click', () => {
+            if (this.currentPlayer === 1) this.togglePlayer();
+        });
+        
+        // Add keyboard events for accessibility
+        this.player1Container.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                if (this.currentPlayer === 2) this.togglePlayer();
+            }
+        });
+        this.player2Container.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                if (this.currentPlayer === 1) this.togglePlayer();
+            }
+        });
     }
 
     updateTimePreset() {
