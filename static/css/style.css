@@ -164,54 +164,6 @@ input:checked + .slider:before {
 .material-button .material-icons {
     color: var(--primary-color);
     font-size: 24px;
-/* Match History Styles */
-.match-history-container {
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-}
-
-.match-history-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-}
-
-.match-card {
-    background-color: var(--surface-color);
-    border-radius: 8px;
-    padding: 1rem;
-    margin-bottom: 1rem;
-}
-
-.match-date {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
-}
-
-.match-details {
-    display: grid;
-    gap: 0.5rem;
-}
-
-.match-preset {
-    color: var(--text-primary);
-    font-weight: 500;
-}
-
-.match-players {
-    display: grid;
-    gap: 0.25rem;
-    color: var(--text-primary);
-}
-
-.match-winner {
-    color: var(--primary-color);
-    font-weight: 500;
-    margin-top: 0.5rem;
-}
 }
 .preset-selector {
     margin-bottom: 1rem;
