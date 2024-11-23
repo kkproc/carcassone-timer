@@ -1,7 +1,8 @@
 class CarcassonneTimer {
     constructor() {
-        this.player1Time = 30; // 30 seconds
-        this.player2Time = 30;
+        this.timePreset = 30; // Default 30 seconds
+        this.player1Time = this.timePreset;
+        this.player2Time = this.timePreset;
         this.player1Total = 0;
         this.player2Total = 0;
         this.currentPlayer = 1;
@@ -20,6 +21,7 @@ class CarcassonneTimer {
         this.playerSwitch = document.getElementById('player-switch');
         this.pauseBtn = document.getElementById('pause-btn');
         this.resetBtn = document.getElementById('reset-btn');
+        this.timePresetSelect = document.getElementById('time-preset');
         
         // Player 1 elements
         this.p1Minutes = document.getElementById('player1-minutes');
@@ -36,6 +38,16 @@ class CarcassonneTimer {
         this.playerSwitch.addEventListener('change', () => this.togglePlayer());
         this.pauseBtn.addEventListener('click', () => this.togglePause());
         this.resetBtn.addEventListener('click', () => this.resetTimer());
+        this.timePresetSelect.addEventListener('change', () => this.updateTimePreset());
+    }
+
+    updateTimePreset() {
+        if (!this.isRunning) {
+            this.timePreset = parseInt(this.timePresetSelect.value);
+            this.player1Time = this.timePreset;
+            this.player2Time = this.timePreset;
+            this.updateDisplay();
+        }
     }
 
     formatTime(seconds) {
@@ -108,8 +120,9 @@ class CarcassonneTimer {
 
     resetTimer() {
         clearInterval(this.timerInterval);
-        this.player1Time = 30;
-        this.player2Time = 30;
+        this.timePreset = parseInt(this.timePresetSelect.value);
+        this.player1Time = this.timePreset;
+        this.player2Time = this.timePreset;
         this.player1Total = 0;
         this.player2Total = 0;
         this.currentPlayer = 1;
