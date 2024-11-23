@@ -1,6 +1,7 @@
 class CarcassonneTimer {
     constructor() {
-        this.timePreset = 30; // Default 30 seconds
+        this.initializeElements();
+        this.timePreset = parseInt(this.timePresetSelect.value); // Get initial preset value
         this.player1Time = this.timePreset;
         this.player2Time = this.timePreset;
         this.player1Total = 0;
@@ -11,8 +12,6 @@ class CarcassonneTimer {
         
         // Sound setup
         this.synth = new Tone.Synth().toDestination();
-        
-        this.initializeElements();
         this.setupEventListeners();
         this.updateDisplay();
     }
@@ -79,9 +78,9 @@ class CarcassonneTimer {
         
         // Reset current player's time before switching
         if (this.currentPlayer === 1) {
-            this.player1Time = 30;
+            this.player1Time = this.timePreset;
         } else {
-            this.player2Time = 30;
+            this.player2Time = this.timePreset;
         }
         
         this.currentPlayer = this.currentPlayer === 1 ? 2 : 1;
