@@ -17,7 +17,7 @@ class CarcassonneTimer {
     }
 
     initializeElements() {
-        this.lever = document.getElementById('lever');
+        this.playerSwitch = document.getElementById('player-switch');
         this.pauseBtn = document.getElementById('pause-btn');
         this.resetBtn = document.getElementById('reset-btn');
         
@@ -33,7 +33,7 @@ class CarcassonneTimer {
     }
 
     setupEventListeners() {
-        this.lever.addEventListener('click', () => this.togglePlayer());
+        this.playerSwitch.addEventListener('change', () => this.togglePlayer());
         this.pauseBtn.addEventListener('click', () => this.togglePause());
         this.resetBtn.addEventListener('click', () => this.resetTimer());
     }
@@ -73,7 +73,7 @@ class CarcassonneTimer {
         }
         
         this.currentPlayer = this.currentPlayer === 1 ? 2 : 1;
-        this.lever.classList.toggle('player2-active');
+        this.playerSwitch.checked = this.currentPlayer === 2;
     }
 
     startTimer() {
@@ -114,7 +114,7 @@ class CarcassonneTimer {
         this.player2Total = 0;
         this.currentPlayer = 1;
         this.isRunning = false;
-        this.lever.classList.remove('player2-active');
+        this.playerSwitch.checked = false;
         this.pauseBtn.textContent = 'Pause';
         this.updateDisplay();
     }
