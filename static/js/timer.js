@@ -45,23 +45,23 @@ class CarcassonneTimer {
         
         // Add click events for timer containers
         this.player1Container.addEventListener('click', () => {
-            if (this.currentPlayer === 2) this.togglePlayer();
+            if (this.currentPlayer === 1) this.togglePlayer();
         });
         this.player2Container.addEventListener('click', () => {
-            if (this.currentPlayer === 1) this.togglePlayer();
+            if (this.currentPlayer === 2) this.togglePlayer();
         });
         
         // Add keyboard events for accessibility
         this.player1Container.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
-                if (this.currentPlayer === 2) this.togglePlayer();
+                if (this.currentPlayer === 1) this.togglePlayer();
             }
         });
         this.player2Container.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
-                if (this.currentPlayer === 1) this.togglePlayer();
+                if (this.currentPlayer === 2) this.togglePlayer();
             }
         });
     }
