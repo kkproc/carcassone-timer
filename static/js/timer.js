@@ -1,7 +1,7 @@
 class CarcassonneTimer {
     constructor() {
-        this.player1Time = 600; // 10 minutes in seconds
-        this.player2Time = 600;
+        this.player1Time = 30; // 30 seconds
+        this.player2Time = 30;
         this.player1Total = 0;
         this.player2Total = 0;
         this.currentPlayer = 1;
@@ -65,6 +65,13 @@ class CarcassonneTimer {
         // Play switch sound
         this.synth.triggerAttackRelease("C4", "8n");
         
+        // Reset current player's time before switching
+        if (this.currentPlayer === 1) {
+            this.player1Time = 30;
+        } else {
+            this.player2Time = 30;
+        }
+        
         this.currentPlayer = this.currentPlayer === 1 ? 2 : 1;
         this.lever.classList.toggle('player2-active');
     }
@@ -101,8 +108,8 @@ class CarcassonneTimer {
 
     resetTimer() {
         clearInterval(this.timerInterval);
-        this.player1Time = 600;
-        this.player2Time = 600;
+        this.player1Time = 30;
+        this.player2Time = 30;
         this.player1Total = 0;
         this.player2Total = 0;
         this.currentPlayer = 1;
