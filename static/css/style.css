@@ -211,3 +211,54 @@ input:checked + .slider:before {
         transform: translateX(-50%);
     }
 }
+
+/* Match history styles */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.match-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.match-card {
+    background-color: var(--surface-color);
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.match-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.match-date {
+    color: var(--text-secondary);
+}
+
+.winner {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.match-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.player-times {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.turn-duration {
+    color: var(--text-secondary);
+}
